@@ -1,18 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Offside&display=swap');
 @import url("https://use.typekit.net/bth2ctt.css");
 
+body {
+  margin: 0;
+  background-color: #F1EBEB;
+  color: #593C1A;
+}
+
 * {
   box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
 :root {
   --font1: "source-serif-pro", serif;
   --font2: "Offside", sans-serif;
-}
-
-body {
-  background-color: #F1EBEB;
-  color: #593C1A;
 }
 
 .wrapper {
@@ -77,4 +80,15 @@ p {
   font-style: italic;
   letter-spacing: 2px;
   position: relative;
+}
+
+#bg_forest {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+#bg_forest svg {
+  width: 100%;
+  height: 100%;
+  object-position: center;
 }
