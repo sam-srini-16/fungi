@@ -204,6 +204,23 @@ async function mainEvent() {
 
         populateVisualizationSelect();
     }
+    
+    loadSVG();
+}
+
+// SVG
+// https://github.com/HoanghoDev/youtube_v2/blob/main/gsap_animation/
+function loadSVG () {
+    fetch("forest.svg")
+    .then((response) => { return response.text();})
+    .then((svg) => {
+        document.getElementById('bg_forest').innerHTML = svg;
+        document.querySelector('#bg_forest svg').setAttribute("preserveAspectRatio", "xMidYMid slice");
+        setAnimationScroll();
+    })
+}
+
+function setAnimationScroll() {
 }
 
 // Calculate Probability

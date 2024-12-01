@@ -44,32 +44,37 @@ p {
 
 #fungi-title {
   font-family: var(--font1);
-  font-size: 45px;
-  font-weight: 100;
+  font-size: 2.5vw;
+  font-weight: 500;
   font-style: bold;
-  position: relative;
-  top: 50%;
-  left: 50%;
+  text-align: center;
+  margin-bottom: -17vw;
+}
+
+.landing-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.forager-container {
+  display: flex;
+  align-items: baseline;
 }
 
 .forager-f {
   font-family: var(--font1);
-  font-size: 320px;
+  font-size: 11vw;
   font-weight: 500;
   font-style: italic;
-  position: relative;
-  top: 50%;
-  left: 50%;
-
+  margin-right: -1vw;
 }
 
 .forager-orager {
   font-family: var(--font1);
-  font-size: 200px;
+  font-size: 7.5vw;
   font-weight: 500;
   font-style: italic;
-  position: relative;
-  top: 50%;
-  left: 50%;
   letter-spacing: 2px;
+  position: relative;
 }
