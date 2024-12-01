@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Offside&display=swap');
+@import url("https://use.typekit.net/bth2ctt.css");
+
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --font1: "source-serif-pro", serif;
+    --font2: "Offside", sans-serif;
+  } 
+
+  body {
+    background-color: #F1EBEB;
+    color: #593C1A;
+  }
+
+  .wrapper {
+    height: 100%;
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+  }
+
+  section {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+    border: 1px solid #000000;
+  }
+
+  p {
+    font-family: var(--font2);
+    font-size: 20px;
+  }
+
+  h2 {
+    font-family: var(--font1);
+    font-size: 45px;
+    font-weight: 100;
+    font-style: bold;
+    position: absolute;
+    top: 990px;
+    left: 500px;
+  }
+
+  .loading-text {
+    position: absolute;
+    top: 500px;
+  }
+
+
+  .forager-f {
+    font-family: var(--font1);
+    font-size: 320px;
+    font-weight: 500;
+    font-style: italic;
+    position: absolute;
+    top: 580px;
+    left: 250px;
+    
+  }
+
+  .forager-orager {
+    font-family: var(--font1);
+    font-size: 200px;
+    font-weight: 500;
+    font-style: italic;
+    position: absolute;
+    top: 740px;
+    left: 330px;
+    letter-spacing: 2px;
+  }
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
