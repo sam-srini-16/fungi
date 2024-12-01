@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fungi Forager</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="spacer"></div>
+    <div class="wrapper">
+        <section id="landing">
+            <div class="landing-content">
+                <h2 id="fungi-title">FUNGI</h2><br>
+                <h3 style="display: inline;" class="forager-f">f</h3>
+                <h4 style="display: inline;" class="forager-orager">orager</h4>
+            </div>
+        </section>
+        <section id="edibility-predictor">
+            <form id="edibility-form">
+                <label for="cap-shape">Cap Shape</label>
+                <div class="button-group" role="group" aria-label="Cap Shape">
+                    <input type="radio" id="cap-shape-b" name="cap-shape" value="b" class="btn-check">
+                    <label class="btn" for="cap-shape-b">Bell</label>
+                    <input type="radio" id="cap-shape-x" name="cap-shape" value="x" class="btn-check">
+                    <label class="btn" for="cap-shape-x">Convex</label>
+                    <input type="radio" id="cap-shape-f" name="cap-shape" value="f" class="btn-check">
+                    <label class="btn" for="cap-shape-f">Flat</label>
+                    <input type="radio" id="cap-shape-k" name="cap-shape" value="k" class="btn-check">
+                    <label class="btn" for="cap-shape-k">Knobbed</label>
+                </div>
+                <br>
+                <label for="cap-color">Cap Color</label>
+                <div class="button-group" role="group" aria-label="Cap Color">
+                    <input type="radio" id="cap-color-n" name="cap-color" value="n" class="btn-check">
+                    <label class="btn" for="cap-color-n">Brown</label>
+                    <input type="radio" id="cap-color-g" name="cap-color" value="g" class="btn-check">
+                    <label class="btn" for="cap-color-g">Gray</label>
+                    <input type="radio" id="cap-color-e" name="cap-color" value="e" class="btn-check">
+                    <label class="btn" for="cap-color-e">Red</label>
+                    <input type="radio" id="cap-color-w" name="cap-color" value="w" class="btn-check">
+                    <label class="btn" for="cap-color-w">White</label>
+                    <input type="radio" id="cap-color-y" name="cap-color" value="y" class="btn-check">
+                    <label class="btn" for="cap-color-y">Yellow</label>
+                </div>
+                <br>
+                <label for="cap-surface">Cap Surface</label>
+                <div class="button-group" role="group" aria-label="Cap Surface">
+                    <input type="radio" id="cap-surface-f" name="cap-surface" value="f" class="btn-check">
+                    <label class="btn" for="cap-surface-f">Fibrous</label>
+                    <input type="radio" id="cap-surface-y" name="cap-surface" value="y" class="btn-check">
+                    <label class="btn" for="cap-surface-y">Scaly</label>
+                    <input type="radio" id="cap-surface-s" name="cap-surface" value="s" class="btn-check">
+                    <label class="btn" for="cap-surface-s">Smooth</label>
+                </div>
+                <br>
+                <label for="stalk-shape">Stalk Shape</label>
+                <div class="button-group" role="group" aria-label="Stalk Shape">
+                    <input type="radio" id="stalk-shape-t" name="stalk-shape" value="t" class="btn-check">
+                    <label class="btn" for="stalk-shape-t">Tapering</label>
+                    <input type="radio" id="stalk-shape-e" name="stalk-shape" value="e" class="btn-check">
+                    <label class="btn" for="stalk-shape-e">Enlarging</label>
+                </div>
+                <br>
+                <button type="submit" id="calculate-btn">Calculate Probability</button>
+            </form>
+        </section>
+    </div>
+    <div class="spacer"></div>
+    <script type="module" src="script.js"></script>
+</body>
+
+</html>
