@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fungi Forager</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 </head>
 
 <body>
@@ -18,8 +19,8 @@
                 <h4 style="display: inline;" class="forager-orager">orager</h4>
             </div>
         </section>
-        <section id="edibility-predictor">
-            <form id="edibility-form">
+        <section id="probability">
+            <form id="probability-form">
                 <label for="cap-shape">Cap Shape</label>
                 <div class="button-group" role="group" aria-label="Cap Shape">
                     <input type="radio" id="cap-shape-b" name="cap-shape" value="b" class="btn-check">
@@ -66,6 +67,21 @@
                 <br>
                 <button type="submit" id="calculate-btn">Calculate Probability</button>
             </form>
+            <div id="result-div">
+                <p hidden>Your probability is ready!</p>
+                <p hidden>The probability of your mushroom being edible is:</p>
+                <p hidden id="probability-result"></p>
+            </div>
+        </section>
+        <section id="visualization">
+            <div id="visualization-select">
+                <label for="visualition-property-1">Property 1:</label>
+                <select name="visualition-property-1" id="visualition-property-1">
+                </select>
+                <label for="visualition-property-2">Property 2:</label>
+                <select name="visualition-property-2" id="visualition-property-2">
+                </select>
+            </div>
         </section>
     </div>
     <div class="spacer"></div>
