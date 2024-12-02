@@ -1,3 +1,14 @@
+// Initialize Lenis
+const lenis = new Lenis();
+
+// Use requestAnimationFrame to continuously update the scroll
+function raf(time) {
+  lenis.raf(time);
+  requestAnimationFrame(raf);
+}
+
+requestAnimationFrame(raf);
+
 // constants
 const LEGEND = {
     'cap-shape': {
@@ -226,23 +237,26 @@ function setAnimationScroll() {
         scrollTrigger: {
             trigger: "#bg_forest",
             start: "top 0%",
-            end: "center 1%",
-            scrub: true,
+            end: "center 30%",
+            scrub: 2,
             pin: true
         }
     }).add([
-        gsap.to("#fg_left", 2, { x: -800 }),
-        gsap.to("#fg_right", 2, { x: 800 }),
-        gsap.to("#bg_left", 2, { x: -400 }),
-        gsap.to("#bg_right", 2, { x: 400 })
+        gsap.to("#fungi-title", 1, { opacity: 0 }),
+        gsap.to("#forager-f", 1, { opacity: 0 }),
+        gsap.to("#forager-orager", 1, { opacity: 0 }),
+        gsap.to("#fg_left", 1, { x: -200 }),
+        gsap.to("#fg_right",1, { x: 200 }),
+        gsap.to("#bg_left", 2, { x: -50 }),
+        gsap.to("#bg_right", 2, { x: 50 })
     ]);
 
     gsap.timeline({
         scrollTrigger: {
             trigger: "#caution",
-            start: "top 20%",
-            end: "center 30%",
-            scrub: true,
+            start: "top 40%",
+            end: "bottom 70%",
+            scrub: 6,
         }
     })
     .from("#caution-title", {
@@ -251,30 +265,31 @@ function setAnimationScroll() {
         duration: 5
     })
     .from("#caution-text-1", {
-        y: 100,
+        y: 200,
         opacity: 0,
-        duration: 5
-    }, ">=0.5")
-    .to("#caution-text-1", {
-        opacity: 0,
-        y: -50,
-        duration: 3
-    }, "+=1")
+        duration: 10
+    }, "+=2")
     .from("#caution-text-2", {
         y: 100,
         opacity: 0,
+        duration: 10
+    }, "+=2")
+    .to("#caution-text-1", {
+        opacity: 0,
+        y: 20,
         duration: 5
-    }, "<")
+    }, "+=2")
     .to("#caution-text-2", {
         opacity: 0,
-        y: -50,
-        duration: 3
+        y: 10,
+        duration: 5
     }, "+=1")
     .to("#caution-title", {
         opacity: 0,
-        y: -50,
-        duration: 3
-    }, "+=1");
+        y: -300,
+        duration: 5
+    }, "+=2");
+
 }
 
 // Calculate Probability

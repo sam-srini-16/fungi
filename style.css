@@ -5,6 +5,7 @@ body {
   margin: 0;
   background-color: #F1EBEB;
   color: #593C1A;
+  overflow-x: hidden;
 }
 
 * {
@@ -101,7 +102,8 @@ p {
 /* Caution */
 
 #caution {
-  margin-top: 70vh;
+  margin: 0;
+  padding: 50px;
 }
 
 .caution-container {
@@ -116,6 +118,7 @@ p {
 #caution-title {
   font-family: var(--font2);
   font-size: 2vw;
+  margin-bottom: 20px;
 }
 
 .caution-text {
@@ -124,4 +127,5 @@ p {
   line-height: 1.6;
   text-align: center;
   max-width: 40vw;
+  margin-bottom: 20px;
 }
