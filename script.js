@@ -252,16 +252,21 @@ function setAnimationScroll() {
 
 function handleCalculate(event) {
     event.preventDefault();
-    const probability = getProbabilityEdibleAll();
-    document.getElementById('probability-result').textContent = `${Math.round(probability * 100)}%`;
-    document.querySelectorAll('#result-div p').forEach(element => {
-        element.hidden = false;
-    });
+    try {
+        const probability = getProbabilityEdibleAll();
+        document.getElementById('probability-result').textContent = `${Math.round(probability * 100)}%`;
+        document.querySelectorAll('#result-div p').forEach(element => {
+            element.hidden = false;
+        });
 
-    calculateButton.textContent = 'Reset';
+        calculateButton.textContent = 'Reset';
 
-    calculateButton.removeEventListener('click', handleCalculate);
-    calculateButton.addEventListener('click', handleReset);
+        calculateButton.removeEventListener('click', handleCalculate);
+        calculateButton.addEventListener('click', handleReset);
+    }
+    catch (error) {
+        alert(error.message);
+    }
 }
 
 function handleReset(event) {
@@ -295,8 +300,7 @@ function getProbabilityEdibleAll() {
     const stalkShape = document.querySelector('input[name="stalk-shape"]:checked')?.value;
 
     if (!capShape || !capColor || !capSurface || !stalkShape) {
-        alert('Please fill in all fields');
-        return 0;
+        throw new Error('Please fill in all fields');
     }
 
     const probabilityCapShape = getProbabilityEdible("cap-shape", capShape);
