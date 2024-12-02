@@ -222,7 +222,7 @@ function loadSVG() {
 
 function setAnimationScroll() {
     gsap.registerPlugin(ScrollTrigger);
-    let runAnimation = gsap.timeline({
+    gsap.timeline({
         scrollTrigger: {
             trigger: "#bg_forest",
             start: "top 0%",
@@ -230,22 +230,46 @@ function setAnimationScroll() {
             scrub: true,
             pin: true
         }
-    });
-    runAnimation
-        .add([
-            gsap.to("#fg_left", 2, {
-                x: -800,
-            }),
-            gsap.to("#fg_right", 2, {
-                x: 800,
-            }),
-            gsap.to("#bg_left", 2, {
-                x: -400,
-            }),
-            gsap.to("#bg_right", 2, {
-                x: 400,
-            })
-        ])
+    }).add([
+        gsap.to("#fg_left", 2, { x: -800 }),
+        gsap.to("#fg_right", 2, { x: 800 }),
+        gsap.to("#bg_left", 2, { x: -400 }),
+        gsap.to("#bg_right", 2, { x: 400 })
+    ]);
+
+    gsap.timeline({
+        scrollTrigger: {
+            trigger: "#caution",
+            start: "top 50%",
+            end: "center 50%",
+            scrub: true,
+        }
+    })
+    .from("#caution-title", {
+        y: 200,
+        opacity: 0,
+        duration: 3
+    })
+    .from("#caution-text-1", {
+        y: 100,
+        opacity: 0,
+        duration: 3
+    }, ">=0.5")
+    .to("#caution-text-1", {
+        opacity: 0,
+        y: -50,
+        duration: 3
+    }, "+=1")
+    .from("#caution-text-2", {
+        y: 100,
+        opacity: 0,
+        duration: 3
+    }, "<")
+    .to("#caution-text-2", {
+        opacity: 0,
+        y: -50,
+        duration: 3
+    }, "+=1");
 }
 
 // Calculate Probability
