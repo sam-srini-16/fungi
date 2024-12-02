@@ -224,7 +224,7 @@ function setAnimationScroll() {
     gsap.registerPlugin(ScrollTrigger);
     let runAnimation = gsap.timeline({
         scrollTrigger: {
-            trigger: "#bg_city",
+            trigger: "#bg_forest",
             start: "top 0%",
             end: "center 1%",
             scrub: true,
@@ -235,19 +235,15 @@ function setAnimationScroll() {
         .add([
             gsap.to("#fg_left", 2, {
                 x: -800,
-                scale: 1.2
             }),
             gsap.to("#fg_right", 2, {
                 x: 800,
-                scale: 1.2
             }),
             gsap.to("#bg_left", 2, {
                 x: -400,
-                scale: .8
             }),
             gsap.to("#bg_right", 2, {
                 x: 400,
-                scale: .8
             })
         ])
 }
