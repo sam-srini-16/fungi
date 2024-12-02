@@ -10,18 +10,17 @@
 </head>
 
 <body>
-    <div class="spacer"></div>
-    <div class="wrapper">
-        <section id="landing">
-            <div id="bg_forest"></div>
-            <div class="landing-content">
-                <h2 id="fungi-title">FUNGI</h2>
-                <div class="forager-container">
-                    <h3 class="forager-f">f</h3>
-                    <h4 class="forager-orager">orager</h4>
-                </div>
+    <div id="landing">
+        <div id="bg_forest"></div>
+        <div id="content">
+            <h2 id="fungi-title">FUNGI</h2>
+            <div id="forager-container">
+                <h3 id="forager-f">f</h3>
+                <h4 id="forager-orager">orager</h4>
             </div>
-        </section>
+        </div>
+    </div>
+    <div class="wrapper">
         <section id="probability">
             <form id="probability-form">
                 <label for="cap-shape">Cap Shape</label>
@@ -87,7 +86,8 @@
             </div>
         </section>
     </div>
-    <div class="spacer"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script type="module" src="script.js"></script>
 </body>
 

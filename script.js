@@ -1,5 +1,5 @@
 // constants
-const LEGEND =  {
+const LEGEND = {
     'cap-shape': {
         'b': 'Bell',
         'c': 'Conical',
@@ -204,24 +204,52 @@ async function mainEvent() {
 
         populateVisualizationSelect();
     }
-    
+
     loadSVG();
 }
 
 // SVG
 // https://github.com/HoanghoDev/youtube_v2/blob/main/gsap_animation/
-function loadSVG () {
+function loadSVG() {
     fetch("forest.svg")
-    .then((response) => { return response.text();})
-    .then((svg) => {
-        document.getElementById('bg_forest').innerHTML = svg;
-        document.querySelector('#bg_forest svg').setAttribute("preserveAspectRatio", "xMidYMid slice");
-        setAnimationScroll();
-    })
+        .then((response) => { return response.text(); })
+        .then((svg) => {
+            document.getElementById('bg_forest').innerHTML = svg;
+            document.querySelector('#bg_forest svg').setAttribute("preserveAspectRatio", "xMidYMid slice");
+            setAnimationScroll();
+        })
 }
 
 function setAnimationScroll() {
-    
+    gsap.registerPlugin(ScrollTrigger);
+    let runAnimation = gsap.timeline({
+        scrollTrigger: {
+            trigger: "#bg_city",
+            start: "top 0%",
+            end: "center 1%",
+            scrub: true,
+            pin: true
+        }
+    });
+    runAnimation
+        .add([
+            gsap.to("#fg_left", 2, {
+                x: -800,
+                scale: 1.2
+            }),
+            gsap.to("#fg_right", 2, {
+                x: 800,
+                scale: 1.2
+            }),
+            gsap.to("#bg_left", 2, {
+                x: -400,
+                scale: .8
+            }),
+            gsap.to("#bg_right", 2, {
+                x: 400,
+                scale: .8
+            })
+        ])
 }
 
 // Calculate Probability
@@ -324,16 +352,16 @@ function handleVisualizationChange(event) {
 function buildVisualization(property1, property2) {
     const property1Values = Object.entries(LEGEND[property1]).map(([key, value]) => ({ key, value }));
     const property2Values = Object.entries(LEGEND[property2]).map(([key, value]) => ({ key, value }));
-    
+
     const zValues = property1Values.map(p1 => {
         return property2Values.map(p2 => {
-            const edibleCount = edibleMushrooms.filter(m => 
+            const edibleCount = edibleMushrooms.filter(m =>
                 m[property1] === p1.key && m[property2] === p2.key
             ).length;
-            const poisonousCount = poisonousMushrooms.filter(m => 
+            const poisonousCount = poisonousMushrooms.filter(m =>
                 m[property1] === p1.key && m[property2] === p2.key
             ).length;
-            
+
             return edibleCount + poisonousCount === 0 ? 0 :
                 Math.round((edibleCount / (edibleCount + poisonousCount)) * 100);
         });
@@ -374,7 +402,7 @@ function buildVisualization(property1, property2) {
         for (let j = 0; j < property2Values.length; j++) {
             const currentValue = zValues[i][j];
             const textColor = 'black'
-            
+
             layout.annotations.push({
                 xref: 'x',
                 yref: 'y',
