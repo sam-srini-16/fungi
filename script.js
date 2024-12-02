@@ -240,20 +240,20 @@ function setAnimationScroll() {
     gsap.timeline({
         scrollTrigger: {
             trigger: "#caution",
-            start: "top 50%",
-            end: "center 50%",
+            start: "top 20%",
+            end: "center 30%",
             scrub: true,
         }
     })
     .from("#caution-title", {
         y: 200,
         opacity: 0,
-        duration: 3
+        duration: 5
     })
     .from("#caution-text-1", {
         y: 100,
         opacity: 0,
-        duration: 3
+        duration: 5
     }, ">=0.5")
     .to("#caution-text-1", {
         opacity: 0,
@@ -263,9 +263,14 @@ function setAnimationScroll() {
     .from("#caution-text-2", {
         y: 100,
         opacity: 0,
-        duration: 3
+        duration: 5
     }, "<")
     .to("#caution-text-2", {
+        opacity: 0,
+        y: -50,
+        duration: 3
+    }, "+=1")
+    .to("#caution-title", {
         opacity: 0,
         y: -50,
         duration: 3
