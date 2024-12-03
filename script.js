@@ -522,28 +522,51 @@ function buildVisualization(property1, property2) {
         y: property1Values.map(p => p.value),
         type: 'heatmap',
         colorscale: [
-            [0, 'red'],
-            [0.5, 'yellow'],
-            [1, 'darkgreen']
+            [0, '#B22222'],     // Bright red for poisonous (0%)
+            [0.5, '#FFC125'],   // Bright golden yellow for middle values (50%)
+            [1, '#1B4D3E']      // Deep forest teal for edible (100%)
         ],
         hoverongaps: false
     }];
 
     const layout = {
-        title: `Probability that a mushroom is edible given ${property1} and ${property2}`,
+        title: {
+            text: `Probability that a mushroom is edible given ${property1} and ${property2}`,
+            font: {
+                family: '"Offside", sans-serif'
+            }
+        },
         xaxis: {
             title: property2.replace(/-/g, ' '),
             tickangle: 45,
-            side: 'bottom'
+            side: 'bottom',
+            tickfont: {
+                family: '"Offside", sans-serif'
+            },
+            titlefont: {
+                family: '"Offside", sans-serif'
+            }
         },
         yaxis: {
-            title: property1.replace(/-/g, ' ')
+            title: property1.replace(/-/g, ' '),
+            tickfont: {
+                family: '"Offside", sans-serif'
+            },
+            titlefont: {
+                family: '"Offside", sans-serif'
+            }
         },
         margin: {
             l: 150,
-            b: 150
+            b: 150,
+            t: 100,
+            r: 50
         },
-        annotations: []
+        height: 1000,
+        width: 1200,
+        annotations: [],
+        paper_bgcolor: 'rgba(0,0,0,0)',
+        plot_bgcolor: 'rgba(0,0,0,0)'
     };
 
     // https://plotly.com/javascript/heatmaps/
@@ -559,7 +582,7 @@ function buildVisualization(property1, property2) {
                 y: property1Values[i].value,
                 text: currentValue + '%',
                 font: {
-                    family: 'Arial',
+                    family: '"Offside", sans-serif',
                     size: 12,
                     color: textColor
                 },
