@@ -231,15 +231,15 @@ line-height: 5vh;
 }
 
 #form-instructions {
-  font-size: 0.1vw;
-  margin-bottom: 10vh;
+  font-size: 0.5vw;
+  margin-bottom: 5vh;
   margin-top: -20vh;
-
 }
+
 #probablity-form {
   flex: 1;
   max-width: 70%;
-  margin-top: -5vh;
+  margin-top: -10vh;
 }
 
 #result-div {
@@ -253,6 +253,7 @@ line-height: 5vh;
   position: relative;
   border: 0px solid #593C1A;
   transition: border-width 0.5s ease;
+  margin-top: -10vh;
 }
 
 #result-div.active {
