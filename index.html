@@ -27,56 +27,71 @@
                 <p id="caution-title">Caution</p>
                 <p class="caution-text" id="caution-text-1">
                     No single visual characteristic can reliably determine a mushroom's edibility. Many edible mushrooms have toxic look-alikes, and misidentification can lead to severe poisoning or death.
-                </p>
+                </p><br>
                 <p class="caution-text" id="caution-text-2">
                     Consult multiple identification features and, when in doubt, seek expertise from experienced foragers or mycologists.
                 </p>
             </div>
         </section>
+        <section id="edibility-calculator">
+            <div id="edibility-calculator-content">
+                <p id="mushroom-edibility-title" class="animate-text"> Edibility Calculator</p>
+                <p id="scroll-down-text">Scroll down</p>
+                <div class="scroll-arrow">&#8595;</div>
+            </div>
+        </section>
         <section id="probability">
             <form id="probability-form">
+                <div class="button-group-cap-shape">
+                <div id="form-instructions">
+                    <p>Select the features of your mushroom:</p>
+                </div>
                 <label for="cap-shape">Cap Shape</label>
                 <div class="button-group" role="group" aria-label="Cap Shape">
-                    <input type="radio" id="cap-shape-b" name="cap-shape" value="b" class="btn-check">
-                    <label class="btn" for="cap-shape-b">Bell</label>
-                    <input type="radio" id="cap-shape-x" name="cap-shape" value="x" class="btn-check">
-                    <label class="btn" for="cap-shape-x">Convex</label>
-                    <input type="radio" id="cap-shape-f" name="cap-shape" value="f" class="btn-check">
-                    <label class="btn" for="cap-shape-f">Flat</label>
-                    <input type="radio" id="cap-shape-k" name="cap-shape" value="k" class="btn-check">
-                    <label class="btn" for="cap-shape-k">Knobbed</label>
+                        <input type="radio" id="cap-shape-b" name="cap-shape" value="b" class="btn-check">
+                        <label class="btn radio-label" for="cap-shape-b">Bell</label>
+                        <input type="radio" id="cap-shape-x" name="cap-shape" value="x" class="btn-check">
+                        <label class="btn radio-label" for="cap-shape-x">Convex</label>
+                        <input type="radio" id="cap-shape-f" name="cap-shape" value="f" class="btn-check">
+                        <label class="btn radio-label" for="cap-shape-f">Flat</label>
+                        <input type="radio" id="cap-shape-k" name="cap-shape" value="k" class="btn-check">
+                        <label class="btn radio-label" for="cap-shape-k">Knobbed</label>
+                 </div>
                 </div>
                 <br>
+                <div class="button-group-cap-color">
                 <label for="cap-color">Cap Color</label>
                 <div class="button-group" role="group" aria-label="Cap Color">
                     <input type="radio" id="cap-color-n" name="cap-color" value="n" class="btn-check">
-                    <label class="btn" for="cap-color-n">Brown</label>
+                    <label class="btn radio-label" for="cap-color-n">Brown</label>
                     <input type="radio" id="cap-color-g" name="cap-color" value="g" class="btn-check">
-                    <label class="btn" for="cap-color-g">Gray</label>
+                    <label class="btn radio-label" for="cap-color-g">Gray</label>
                     <input type="radio" id="cap-color-e" name="cap-color" value="e" class="btn-check">
-                    <label class="btn" for="cap-color-e">Red</label>
+                    <label class="btn radio-label" for="cap-color-e">Red</label>
                     <input type="radio" id="cap-color-w" name="cap-color" value="w" class="btn-check">
-                    <label class="btn" for="cap-color-w">White</label>
+                    <label class="btn radio-label" for="cap-color-w">White</label>
                     <input type="radio" id="cap-color-y" name="cap-color" value="y" class="btn-check">
-                    <label class="btn" for="cap-color-y">Yellow</label>
+                    <label class="btn radio-label" for="cap-color-y">Yellow</label>
                 </div>
+                </div>
+
                 <br>
                 <label for="cap-surface">Cap Surface</label>
                 <div class="button-group" role="group" aria-label="Cap Surface">
                     <input type="radio" id="cap-surface-f" name="cap-surface" value="f" class="btn-check">
-                    <label class="btn" for="cap-surface-f">Fibrous</label>
+                    <label class="btn radio-label" for="cap-surface-f">Fibrous</label>
                     <input type="radio" id="cap-surface-y" name="cap-surface" value="y" class="btn-check">
-                    <label class="btn" for="cap-surface-y">Scaly</label>
+                    <label class="btn radio-label" for="cap-surface-y">Scaly</label>
                     <input type="radio" id="cap-surface-s" name="cap-surface" value="s" class="btn-check">
-                    <label class="btn" for="cap-surface-s">Smooth</label>
+                    <label class="btn radio-label" for="cap-surface-s">Smooth</label>
                 </div>
                 <br>
                 <label for="stalk-shape">Stalk Shape</label>
                 <div class="button-group" role="group" aria-label="Stalk Shape">
                     <input type="radio" id="stalk-shape-t" name="stalk-shape" value="t" class="btn-check">
-                    <label class="btn" for="stalk-shape-t">Tapering</label>
+                    <label class="btn radio-label" for="stalk-shape-t">Tapering</label>
                     <input type="radio" id="stalk-shape-e" name="stalk-shape" value="e" class="btn-check">
-                    <label class="btn" for="stalk-shape-e">Enlarging</label>
+                    <label class="btn radio-label" for="stalk-shape-e">Enlarging</label>
                 </div>
                 <br>
                 <button type="submit" id="calculate-btn">Calculate Probability</button>
@@ -84,7 +99,14 @@
             <div id="result-div">
                 <p hidden>Your probability is ready!</p>
                 <p hidden>The probability of your mushroom being edible is:</p>
-                <p hidden id="probability-result"></p>
+                    <p hidden id="probability-result"></p>
+            </div>
+        </section>
+        <section id="whole-dataset">
+            <div id="whole-dataset-content">
+                <p id="whole-dataset-title" class="animate-text"> Data Visualization</p>
+                <p id="scroll-down-text-1">Scroll down</p>
+                <div class="scroll-arrow-1">&#8595;</div>
             </div>
         </section>
         <section id="visualization">
@@ -97,11 +119,15 @@
                 </select>
             </div>
         </section>
+        <section id="spacer-2">
+            <p>keep foraging!</p>
+        </section>
+
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script src="https://unpkg.com/lenis@1.1.17/dist/lenis.min.js"></script>
+    <script src="https://unpkg.com/split-type"></script>
     <script type="module" src="script.js"></script>
 </body>
-
 </html>

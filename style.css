@@ -37,6 +37,11 @@ p {
   font-size: 20px;
 }
 
+.char {
+  transform: translateY(70px);
+  transition: transform 0.5s ease-in-out;
+}
+
 /* Landing */
 
 #landing {
@@ -54,15 +59,20 @@ p {
 
 #fungi-title {
   font-family: var(--font1);
-  font-size: 2.5vw;
+  font-size: 4vw;
   font-weight: 500;
   font-style: bold;
-  text-align: center;
+  position: relative;
+  top: -5vw;
+  left: 43vw;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+  line-height: 5.5rem;
 }
 
 #forager-container {
   position: relative;
-  left: 38vw;
+  left: 33vw;
+  top: -9vw;
   display: flex;
   align-items: baseline;
   margin-top: -6vw;
@@ -70,18 +80,21 @@ p {
 
 #forager-f {
   font-family: var(--font1);
-  font-size: 11vw;
+  font-size: 14vw;
   font-weight: 500;
   font-style: italic;
-  margin-right: -1vw;
+  opacity: 0;
+  animation: fadeIn 1s ease-in forwards;
 }
 
 #forager-orager {
   font-family: var(--font1);
-  font-size: 7.5vw;
+  font-size: 10vw;
   font-weight: 500;
   font-style: italic;
   letter-spacing: 2px;
+  opacity: 0;
+  animation: fadeIn 1s ease-in forwards;
 }
 
 #bg_forest {
@@ -103,7 +116,6 @@ p {
 
 #caution {
   margin: 0;
-  padding: 50px;
 }
 
 .caution-container {
@@ -113,6 +125,7 @@ p {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  gap: 20px;
 }
 
 #caution-title {
@@ -123,9 +136,216 @@ p {
 
 .caution-text {
   font-family: var(--font2);
-  font-size: 1vw;
-  line-height: 1.6;
+  font-size: 1.2vw;
+  line-height: 4vh;
   text-align: center;
-  max-width: 40vw;
-  margin-bottom: 20px;
+  max-width: 50vw;
 }
+
+#edibility-calculator-content {
+  text-align: center;
+  line-height: 40vh;
+}
+
+#whole-dataset-content {
+  text-align: center;
+  line-height: 40vh;
+}
+
+.scroll-arrow {
+  margin-top: -260px;
+  font-size: 24px;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+  40% {transform: translateY(-10px);}
+  60% {transform: translateY(-5px);}
+}
+
+.scroll-arrow-1 {
+  margin-top: -260px;
+  font-size: 24px;
+  animation: bounce 2s infinite;  
+}
+
+
+#mushroom-edibility-title {
+  font-size: 15vw;
+  line-height: 1;
+  white-space: nowrap;
+  display: inline-block;
+  width: fit-content;
+  font-weight: 500;
+  letter-spacing: -1px;
+}
+
+#whole-dataset-title {
+  font-size: 15vw;
+  line-height: 1;
+  white-space: nowrap;
+  display: inline-block;
+  width: fit-content;
+  font-weight: 500;
+  letter-spacing: -1px;
+}
+
+
+#calculate-btn {
+  background-color: #F1EBEB; 
+  border: 1px solid #593C1A; 
+  color: #593C1A; 
+  padding: 10px 20px; 
+  border-radius: 8px;
+  text-align: center; 
+  text-decoration: none; 
+  display: inline-block; 
+  font-size: 1vw; 
+  margin: 4px 2px; 
+  cursor: pointer; 
+  transition: background-color 0.3s ease; 
+  font-family: var(--font2);
+}
+
+#calculate-btn:hover {
+  background-color: #593C1A; 
+  color: #F1EBEB; 
+  font-family: var(--font2);
+}
+
+#probability-form {
+
+font-family: var(--font2);
+font-size: 1.4vw;
+line-height: 5vh;
+
+}
+
+#probability {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+#form-instructions {
+  font-size: 0.1vw;
+  margin-bottom: 10vh;
+  margin-top: -20vh;
+
+}
+#probablity-form {
+  flex: 1;
+  max-width: 70%;
+  margin-top: -5vh;
+}
+
+#result-div {
+  flex: 1;
+  max-width: 30%;
+  margin-left: 10vw;
+  text-align: center;
+  font-size: 1.2vw;
+  padding: 14vw 5vw;
+  min-height: 300px;
+  position: relative;
+  border: 0px solid #593C1A;
+  transition: border-width 0.5s ease;
+}
+
+#result-div.active {
+  background-color: #c3823715;
+  border-radius: 20px;
+}
+
+#probability-result {
+
+  font-size: 4vw;
+  font-weight: 900;
+  opacity: 0;
+  position: absolute;
+  top: 65%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#spacer-2 {
+  min-height: 20vh;
+  background-color: #2c1c0a;
+  color: #936c43;
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+/* Create custom radio button style */
+.radio-label {
+  display: inline-block;
+  padding: 1px 8px;
+  margin: 2px;
+  background-color: #593c1a1d;
+  border: 0.5px solid transparent;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Hover state */
+.radio-label:hover {
+  background-color: #e0e0e0;
+}
+
+/* Checked state */
+input[type="radio"]:checked + .radio-label {
+  background-color: #593C1A;
+  color: white;
+  border-color: #593C1A;
+}
+
+
+.radio-label {
+  margin-right: 30px;
+} 
+
+label[for="cap-shape"] {
+  color: #593C1A; 
+  font-weight: 900;
+  font-size: 1.5vw;
+}
+
+label[for="cap-color"] {
+  color: #593C1A; 
+  font-weight: 900;
+  font-size: 1.5vw;
+}
+
+label[for="cap-surface"] {
+  color: #593C1A; 
+  font-weight: 900;
+  font-size: 1.5vw;
+}
+
+label[for="stalk-shape"] {
+  color: #593C1A; 
+  font-weight: 900;
+  font-size: 1.5vw;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+
+
+
+
+
+

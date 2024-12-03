@@ -9,7 +9,7 @@ function raf(time) {
 
 requestAnimationFrame(raf);
 
-// constants
+
 const LEGEND = {
     'cap-shape': {
         'b': 'Bell',
@@ -182,14 +182,14 @@ const LEGEND = {
     }
 }
 
-// Global variables
+
 let mushrooms = [];
 let edibleMushrooms = [];
 let poisonousMushrooms = [];
 const edibleProbabilities = {};
 const poisonousProbabilities = {};
 
-// DOM elements
+
 const calculateButton = document.getElementById('calculate-btn');
 const property1Select = document.getElementById('visualition-property-1');
 const property2Select = document.getElementById('visualition-property-2');
@@ -220,7 +220,6 @@ async function mainEvent() {
 }
 
 // SVG
-// https://github.com/HoanghoDev/youtube_v2/blob/main/gsap_animation/
 function loadSVG() {
     fetch("forest.svg")
         .then((response) => { return response.text(); })
@@ -231,6 +230,12 @@ function loadSVG() {
         })
 }
 
+// text animation
+const foragerOrager = new SplitType('#fungi-title');
+
+gsap.to('.char', { y: -20, duration: 0.1, stagger: 0.05, delay: 1.2 })
+    
+// landinganimation
 function setAnimationScroll() {
     gsap.registerPlugin(ScrollTrigger);
     gsap.timeline({
@@ -245,8 +250,8 @@ function setAnimationScroll() {
         gsap.to("#fungi-title", 1, { opacity: 0 }),
         gsap.to("#forager-f", 1, { opacity: 0 }),
         gsap.to("#forager-orager", 1, { opacity: 0 }),
-        gsap.to("#fg_left", 1, { x: -200 }),
-        gsap.to("#fg_right",1, { x: 200 }),
+        gsap.to("#fg_left", 1, { x: -150 }),
+        gsap.to("#fg_right",1, { x: 150 }),
         gsap.to("#bg_left", 2, { x: -50 }),
         gsap.to("#bg_right", 2, { x: 50 })
     ]);
@@ -254,8 +259,8 @@ function setAnimationScroll() {
     gsap.timeline({
         scrollTrigger: {
             trigger: "#caution",
-            start: "top 40%",
-            end: "bottom 70%",
+            start: "top 50%",
+            end: "bottom 60%",
             scrub: 6,
         }
     })
@@ -277,20 +282,66 @@ function setAnimationScroll() {
     .to("#caution-text-1", {
         opacity: 0,
         y: 20,
-        duration: 5
-    }, "+=2")
+        duration: 10,
+        delay: 3
+    }, "+=4")
     .to("#caution-text-2", {
         opacity: 0,
-        y: 10,
+        y: 20,
         duration: 5
     }, "+=1")
     .to("#caution-title", {
         opacity: 0,
-        y: -300,
-        duration: 5
-    }, "+=2");
+        y: -50,
+        duration: 2
+    }, "+=1");
 
 }
+
+// edibility calculator text animation
+const title = document.querySelector("#mushroom-edibility-title");
+
+title.innerHTML = title.innerHTML.repeat(3);
+
+gsap.set("#mushroom-edibility-title", {
+    x: "0%" 
+});
+
+gsap.to("#mushroom-edibility-title", {
+    scrollTrigger: {
+        trigger: "#edibility-calculator",
+        start: "top 80%",
+        toggleActions: "play none none reverse"
+    },
+    x: "-50%", 
+    duration: 15,
+    ease: "none",
+    repeat: -1
+});
+
+// heatmap text animation   
+
+const title1 = document.querySelector("#whole-dataset-title");
+
+title1.innerHTML = title1.innerHTML.repeat(3);
+
+gsap.set("#whole-dataset-title", {
+    x: "0%" 
+});
+
+gsap.to("#whole-dataset-title", {
+    scrollTrigger: {
+        trigger: "#whole-dataset",
+        start: "top 80%",
+        toggleActions: "play none none reverse"
+    },
+    x: "-50%", 
+    duration: 15, 
+    ease: "none",
+    repeat: -1
+});
+
+
 
 // Calculate Probability
 
@@ -298,13 +349,51 @@ function handleCalculate(event) {
     event.preventDefault();
     try {
         const probability = getProbabilityEdibleAll();
-        document.getElementById('probability-result').textContent = `${Math.round(probability * 100)}%`;
-        document.querySelectorAll('#result-div p').forEach(element => {
+        const resultElements = document.querySelectorAll('#result-div p');
+        const resultDiv = document.getElementById('result-div');
+        
+        // border animation
+        resultDiv.classList.add('active');
+        
+        
+        document.querySelectorAll('input[type="radio"]:checked + .radio-label').forEach(label => {
+            label.style.transform = 'scale(1.05)';
+        });
+        
+        resultElements.forEach(element => {
             element.hidden = false;
+            element.style.opacity = 0;
         });
 
-        calculateButton.textContent = 'Reset';
+        //probability result animation
 
+        gsap.to(resultElements[0], {
+            opacity: 1,
+            duration: 1,
+            y: -150,
+            ease: 'power1.inOut',
+            onComplete: () => {
+                gsap.to(resultElements[1], {
+                    opacity: 1,
+                    duration: 1,
+                    y: -100,
+                    ease:"power1.inOut",
+                    delay: 1,
+                    onComplete: () => {
+                        document.getElementById('probability-result').textContent = `${Math.round(probability * 100)}%`;
+                        gsap.to(resultElements[2], {
+                            opacity: 1,
+                            duration: 1,
+                            y: 0,
+                            ease: "power1.inOut",
+                        });
+                    }
+                });
+            }
+        });
+
+        //reset button  
+        calculateButton.textContent = 'Reset';
         calculateButton.removeEventListener('click', handleCalculate);
         calculateButton.addEventListener('click', handleReset);
     }
@@ -313,20 +402,36 @@ function handleCalculate(event) {
     }
 }
 
+// radio buttons 
+
 function handleReset(event) {
     event.preventDefault();
     document.getElementById('probability-form').reset();
 
-    document.querySelectorAll('#result-div p').forEach(element => {
-        element.hidden = true;
+    document.querySelectorAll('.radio-label').forEach(label => {
+        label.style.transform = 'scale(1)';
+    });
+    
+
+    document.getElementById('result-div').classList.remove('active');
+    
+  
+    const resultElements = document.querySelectorAll('#result-div p');
+    gsap.to(resultElements, {
+        opacity: 0,
+        duration: 0.3,
+        onComplete: () => {
+            resultElements.forEach(element => {
+                element.hidden = true;
+            });
+        }
     });
 
+    // probability calculator 
     calculateButton.textContent = 'Calculate Probability';
-
     calculateButton.removeEventListener('click', handleReset);
     calculateButton.addEventListener('click', handleCalculate);
 }
-
 function getProbabilityEdible(property, value) {
     if (!edibleProbabilities[property]) {
         edibleProbabilities[property] = edibleMushrooms.filter(mushroom => mushroom[property] === value).length;
@@ -466,3 +571,4 @@ function buildVisualization(property1, property2) {
     Plotly.newPlot('visualization', data, layout);
 }
 document.addEventListener("DOMContentLoaded", async () => mainEvent());
+
