@@ -7,11 +7,19 @@
     <title>Fungi Forager</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <audio id="background-music" loop>
+        <source src="forestsounds.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
 </head>
 
 <body role="main">
     <div id="spacer" aria-hidden="true"></div>
     <div id="landing" role="banner">
+        <button id="mute-button" aria-label="Toggle music">
+            <img src="mute.png" alt="Speaker icon" width="24" height="24">
+        </button>
+        <span class="audio-hint">tap for audio</span>
         <div id="bg_forest" aria-hidden="true"></div>
         <div id="content" role="presentation">
             <h2 id="fungi-title" aria-label="Fungi">FUNGI</h2>

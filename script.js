@@ -230,6 +230,40 @@ function loadSVG() {
         })
 }
 
+// Music control
+const backgroundMusic = document.getElementById('background-music');
+const muteButton = document.getElementById('mute-button');
+let isMuted = true;
+let passedProbabilitySection = false;
+
+// Toggle mute button
+muteButton.addEventListener('click', () => {
+    if (isMuted) {
+        backgroundMusic.play();
+        muteButton.innerHTML = '<img src="unmute.png" alt="unmuted">';
+    } else {
+        backgroundMusic.pause();
+        muteButton.innerHTML = '<img src="mute.png" alt="muted">';
+    }
+    isMuted = !isMuted;
+});
+
+const probabilitySection = document.getElementById('edibility-calculator');
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            backgroundMusic.pause();
+            muteButton.innerHTML = '<img src="mute.png" alt="muted">';
+            isMuted = true;
+        }
+    });
+}, { threshold: 0.5 });
+
+observer.observe(probabilitySection);
+
+
+
 // text animation
 const foragerOrager = new SplitType('#fungi-title');
 
@@ -238,6 +272,26 @@ gsap.to('.char', { y: -20, duration: 0.1, stagger: 0.05, delay: 1.2 })
 // landinganimation
 function setAnimationScroll() {
     gsap.registerPlugin(ScrollTrigger);
+    
+    // Separate timeline for the mute button
+    gsap.timeline({
+        scrollTrigger: {
+            trigger: "#bg_forest",
+            start: "top 0%",
+            end: "center 30%",
+            scrub: true
+        }
+    }).to("#mute-button", {
+        position: "fixed",
+        top: "20px",
+        right: "20px",
+        left: "auto", // Clear any left positioning
+        bottom: "auto", // Clear any bottom positioning
+        transform: "translate(0, 0)",
+        duration: 1
+    });
+
+    // Original timeline for other elements
     gsap.timeline({
         scrollTrigger: {
             trigger: "#bg_forest",
@@ -593,5 +647,8 @@ function buildVisualization(property1, property2) {
 
     Plotly.newPlot('visualization', data, layout);
 }
+
+
+
 document.addEventListener("DOMContentLoaded", async () => mainEvent());
 
