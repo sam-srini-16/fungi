@@ -522,9 +522,9 @@ function buildVisualization(property1, property2) {
         y: property1Values.map(p => p.value),
         type: 'heatmap',
         colorscale: [
-            [0, '#B22222'],     // Bright red for poisonous (0%)
-            [0.5, '#FFC125'],   // Bright golden yellow for middle values (50%)
-            [1, '#1B4D3E']      // Deep forest teal for edible (100%)
+            [0, '#B22222'],     
+            [0.5, '#FFC125'],   
+            [1, '#1B4D3E']      
         ],
         hoverongaps: false
     }];

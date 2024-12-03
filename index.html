@@ -3,28 +3,28 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Fungi Forager</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 </head>
 
-<body>
-    <div id="spacer"></div>
-    <div id="landing">
-        <div id="bg_forest"></div>
-        <div id="content">
-            <h2 id="fungi-title">FUNGI</h2>
-            <div id="forager-container">
-                <h3 id="forager-f">f</h3>
-                <h4 id="forager-orager">orager</h4>
+<body role="main">
+    <div id="spacer" aria-hidden="true"></div>
+    <div id="landing" role="banner">
+        <div id="bg_forest" aria-hidden="true"></div>
+        <div id="content" role="presentation">
+            <h2 id="fungi-title" aria-label="Fungi">FUNGI</h2>
+            <div id="forager-container" role="presentation">
+                <h3 id="forager-f" aria-label="Forager">f</h3>
+                <h4 id="forager-orager" aria-hidden="true">orager</h4>
             </div>
         </div>
     </div>
     <div class="wrapper">
-        <section id="caution">
+        <section id="caution" role="complementary" aria-labelledby="caution-title">
             <div class="caution-container">
-                <p id="caution-title">Caution</p>
+                <p id="caution-title" role="heading" aria-level="2">Caution</p>
                 <p class="caution-text" id="caution-text-1">
                     No single visual characteristic can reliably determine a mushroom's edibility. Many edible mushrooms have toxic look-alikes, and misidentification can lead to severe poisoning or death.
                 </p><br>
@@ -33,21 +33,21 @@
                 </p>
             </div>
         </section>
-        <section id="edibility-calculator">
-            <div id="edibility-calculator-content">
-                <p id="mushroom-edibility-title" class="animate-text"> Edibility Calculator</p>
-                <p id="scroll-down-text">Scroll down</p>
-                <div class="scroll-arrow">&#8595;</div>
+        <section id="edibility-calculator" role="region" aria-labelledby="mushroom-edibility-title">
+            <div id="edibility-calculator-content" role="presentation">
+                <p id="mushroom-edibility-title" class="animate-text" role="heading" aria-level="2"> Edibility Calculator</p>
+                <p id="scroll-down-text" aria-hidden="true">Scroll down</p>
+                <div class="scroll-arrow" aria-hidden="true">&#8595;</div>
             </div>
         </section>
-        <section id="probability">
-            <form id="probability-form">
-                <div class="button-group-cap-shape">
-                <div id="form-instructions">
-                    <p>Select the features of your mushroom:</p>
-                </div>
-                <label for="cap-shape">Cap Shape</label>
-                <div class="button-group" role="group" aria-label="Cap Shape">
+        <section id="probability" role="form" aria-labelledby="form-instructions">
+            <form id="probability-form" role="form" aria-label="Mushroom Feature Selection Form">
+                <div class="button-group-cap-shape" role="group" aria-labelledby="cap-shape-label">
+                    <div id="form-instructions" role="heading" aria-level="2">
+                        <p>Select the features of your mushroom:</p>
+                    </div>
+                    <label id="cap-shape-label" for="cap-shape">Cap Shape</label>
+                    <div class="button-group" role="group" aria-label="Cap Shape">
                         <input type="radio" id="cap-shape-b" name="cap-shape" value="b" class="btn-check">
                         <label class="btn radio-label" for="cap-shape-b">Bell</label>
                         <input type="radio" id="cap-shape-x" name="cap-shape" value="x" class="btn-check">
@@ -56,75 +56,78 @@
                         <label class="btn radio-label" for="cap-shape-f">Flat</label>
                         <input type="radio" id="cap-shape-k" name="cap-shape" value="k" class="btn-check">
                         <label class="btn radio-label" for="cap-shape-k">Knobbed</label>
-                 </div>
+                    </div>
                 </div>
                 <br>
-                <div class="button-group-cap-color">
-                <label for="cap-color">Cap Color</label>
-                <div class="button-group" role="group" aria-label="Cap Color">
-                    <input type="radio" id="cap-color-n" name="cap-color" value="n" class="btn-check">
-                    <label class="btn radio-label" for="cap-color-n">Brown</label>
-                    <input type="radio" id="cap-color-g" name="cap-color" value="g" class="btn-check">
-                    <label class="btn radio-label" for="cap-color-g">Gray</label>
-                    <input type="radio" id="cap-color-e" name="cap-color" value="e" class="btn-check">
-                    <label class="btn radio-label" for="cap-color-e">Red</label>
-                    <input type="radio" id="cap-color-w" name="cap-color" value="w" class="btn-check">
-                    <label class="btn radio-label" for="cap-color-w">White</label>
-                    <input type="radio" id="cap-color-y" name="cap-color" value="y" class="btn-check">
-                    <label class="btn radio-label" for="cap-color-y">Yellow</label>
-                </div>
+                <div class="button-group" role="group" aria-labelledby="cap-color-label">
+                    <label id="cap-color-label" for="cap-color">Cap Color</label>
+                    <div class="button-group" role="group" aria-label="Cap Color">
+                        <input type="radio" id="cap-color-n" name="cap-color" value="n" class="btn-check">
+                        <label class="btn radio-label" for="cap-color-n">Brown</label>
+                        <input type="radio" id="cap-color-g" name="cap-color" value="g" class="btn-check">
+                        <label class="btn radio-label" for="cap-color-g">Gray</label>
+                        <input type="radio" id="cap-color-e" name="cap-color" value="e" class="btn-check">
+                        <label class="btn radio-label" for="cap-color-e">Red</label>
+                        <input type="radio" id="cap-color-w" name="cap-color" value="w" class="btn-check">
+                        <label class="btn radio-label" for="cap-color-w">White</label>
+                        <input type="radio" id="cap-color-y" name="cap-color" value="y" class="btn-check">
+                        <label class="btn radio-label" for="cap-color-y">Yellow</label>
+                    </div>
                 </div>
 
                 <br>
-                <label for="cap-surface">Cap Surface</label>
-                <div class="button-group" role="group" aria-label="Cap Surface">
-                    <input type="radio" id="cap-surface-f" name="cap-surface" value="f" class="btn-check">
-                    <label class="btn radio-label" for="cap-surface-f">Fibrous</label>
-                    <input type="radio" id="cap-surface-y" name="cap-surface" value="y" class="btn-check">
-                    <label class="btn radio-label" for="cap-surface-y">Scaly</label>
-                    <input type="radio" id="cap-surface-s" name="cap-surface" value="s" class="btn-check">
-                    <label class="btn radio-label" for="cap-surface-s">Smooth</label>
+                <div class="button-group" role="group" aria-labelledby="cap-surface-label">
+                    <label id="cap-surface-label" for="cap-surface">Cap Surface</label>
+                    <div class="button-group" role="group" aria-label="Cap Surface">
+                        <input type="radio" id="cap-surface-f" name="cap-surface" value="f" class="btn-check">
+                        <label class="btn radio-label" for="cap-surface-f">Fibrous</label>
+                        <input type="radio" id="cap-surface-y" name="cap-surface" value="y" class="btn-check">
+                        <label class="btn radio-label" for="cap-surface-y">Scaly</label>
+                        <input type="radio" id="cap-surface-s" name="cap-surface" value="s" class="btn-check">
+                        <label class="btn radio-label" for="cap-surface-s">Smooth</label>
+                    </div>
                 </div>
                 <br>
-                <label for="stalk-shape">Stalk Shape</label>
-                <div class="button-group" role="group" aria-label="Stalk Shape">
-                    <input type="radio" id="stalk-shape-t" name="stalk-shape" value="t" class="btn-check">
-                    <label class="btn radio-label" for="stalk-shape-t">Tapering</label>
-                    <input type="radio" id="stalk-shape-e" name="stalk-shape" value="e" class="btn-check">
-                    <label class="btn radio-label" for="stalk-shape-e">Enlarging</label>
+                <div class="button-group" role="group" aria-labelledby="stalk-shape-label">
+                    <label id="stalk-shape-label" for="stalk-shape">Stalk Shape</label>
+                    <div class="button-group" role="group" aria-label="Stalk Shape">
+                        <input type="radio" id="stalk-shape-t" name="stalk-shape" value="t" class="btn-check">
+                        <label class="btn radio-label" for="stalk-shape-t">Tapering</label>
+                        <input type="radio" id="stalk-shape-e" name="stalk-shape" value="e" class="btn-check">
+                        <label class="btn radio-label" for="stalk-shape-e">Enlarging</label>
+                    </div>
                 </div>
                 <br>
-                <button type="submit" id="calculate-btn">Calculate Probability</button>
+                <button type="submit" id="calculate-btn" aria-label="Calculate Probability">Calculate Probability</button>
             </form>
-            <div id="result-div">
-                <p hidden>Your probability is ready!</p>
+            <div id="result-div" role="alert" aria-live="polite">
+                <p hidden aria-hidden="true">Your probability is ready!</p>
                 <p hidden>The probability of your mushroom being edible is:</p>
-                    <p hidden id="probability-result"></p>
+                <p hidden id="probability-result" aria-label="Edibility probability result"></p>
             </div>
         </section>
-        <section id="whole-dataset">
-            <div id="whole-dataset-content">
-                <p id="whole-dataset-title" class="animate-text"> Data Visualization</p>
-                <p id="scroll-down-text-1">Scroll down</p>
-                <div class="scroll-arrow-1">&#8595;</div>
+        <section id="whole-dataset" role="region" aria-labelledby="whole-dataset-title">
+            <div id="whole-dataset-content" role="presentation">
+                <p id="whole-dataset-title" class="animate-text" role="heading" aria-level="2"> Data Visualization</p>
+                <p id="scroll-down-text-1" aria-hidden="true">Scroll down</p>
+                <div class="scroll-arrow-1" aria-hidden="true">&#8595;</div>
             </div>
         </section>
-        <section id="visualization-section">
-            <p id="visualization-instructions">Select the properties to visualize:</p>
-            <div id="visualization-select">
-                <label for="visualition-property-1">Property 1:</label>
-                <select name="visualition-property-1" id="visualition-property-1">
+        <section id="visualization-section" role="region" aria-labelledby="visualization-instructions">
+            <p id="visualization-instructions" role="heading" aria-level="2">Select the properties to visualize:</p>
+            <div id="visualization-select" role="form">
+                <label id="prop1-label" for="visualition-property-1">Property 1:</label>
+                <select name="visualition-property-1" id="visualition-property-1" aria-labelledby="prop1-label">
                 </select>
-                <label for="visualition-property-2">Property 2:</label>
-                <select name="visualition-property-2" id="visualition-property-2">
+                <label id="prop2-label" for="visualition-property-2">Property 2:</label>
+                <select name="visualition-property-2" id="visualition-property-2" aria-labelledby="prop2-label">
                 </select>
             </div>
-            <div id="visualization" class="visualization-container"></div>
+            <div id="visualization" class="visualization-container" role="img" aria-label="Data visualization chart"></div>
         </section>
-        <section id="spacer-2">
+        <section id="spacer-2" role="presentation" aria-hidden="true">
             <p>keep foraging!</p>
         </section>
-
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
