@@ -310,12 +310,16 @@ function setAnimationScroll() {
         gsap.to("#bg_right", 2, { x: 50 })
     ]);
 
+    // First timeline for caution text animations
     gsap.timeline({
         scrollTrigger: {
             trigger: "#caution",
             start: "top 50%",
             end: "bottom 60%",
             scrub: 6,
+            onComplete: () => {
+                mushroomTimeline.play();
+            }
         }
     })
     .from("#caution-title", {
@@ -332,25 +336,93 @@ function setAnimationScroll() {
         y: 100,
         opacity: 0,
         duration: 10
-    }, "+=2")
-    .to("#caution-text-1", {
-        opacity: 0,
-        y: 20,
-        duration: 10,
-        delay: 3
-    }, "+=4")
-    .to("#caution-text-2", {
-        opacity: 0,
-        y: 20,
-        duration: 5
-    }, "+=1")
-    .to("#caution-title", {
-        opacity: 0,
-        y: -50,
-        duration: 2
-    }, "+=1");
+    }, "+=2");
+
+    // .to("#caution-text-1", {
+    //     opacity: 0,
+    //     y: 20,
+    //     duration: 10,
+    //     delay: 3
+    // }, "+=4")
+    // .to("#caution-text-2", {
+    //     opacity: 0,
+    //     y: 20,
+    //     duration: 5
+    // }, "+=1")
+    // .to("#caution-title", {
+    //     opacity: 0,
+    //     y: -50,
+    //     duration: 2
+    // }, "+=1");
+
+    // Separate timeline for mushroom animations
+    const mushroomTimeline = gsap.timeline({
+        scrollTrigger: {
+            trigger: "#caution",
+            start: "top top",
+            end: "+=300%",
+            pin: true,
+            scrub: 2,
+            anticipatePin: 1
+        }
+    });
+
+    mushroomTimeline
+        .set(".scattered-mushrooms", { 
+            opacity: 1
+        })
+        // First pair animation
+        .to("#mushroom1, #mushroom2", {
+            y: 0,
+            opacity: 1,
+            duration: 2,
+            stagger: 0.1,
+            ease: "power1.in"
+        })
+        .to({}, {duration: 0.5}) // Small pause
+        // Second pair transition (overlapping)
+        .to("#mushroom1, #mushroom2", {
+            y: "-100vh",
+            opacity: 0,
+            duration: 2,
+            stagger: 0.1,
+            ease: "power1.out"
+        })
+        .to("#mushroom3, #mushroom4", {
+            y: 0,
+            opacity: 1,
+            duration: 2,
+            stagger: 0.1,
+            ease: "power1.in"
+        }, "<")
+        .to({}, {duration: 0.5}) // Small pause
+        // Third pair transition (overlapping)
+        .to("#mushroom3, #mushroom4", {
+            y: "-100vh",
+            opacity: 0,
+            duration: 2,
+            stagger: 0.1,
+            ease: "power1.out"
+        })
+        .to("#mushroom5, #mushroom6", {
+            y: 0,
+            opacity: 1,
+            duration: 2,
+            stagger: 0.1,
+            ease: "power1.in"
+        }, "<")
+        .to({}, {duration: 0.5}) // Small pause
+        // Final exit
+        .to("#mushroom5, #mushroom6", {
+            y: "-100vh",
+            opacity: 0,
+            duration: 2,
+            stagger: 0.1,
+            ease: "power1.out"
+        });
 
 }
+
 
 // edibility calculator text animation
 const title = document.querySelector("#mushroom-edibility-title");
